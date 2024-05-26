@@ -1,10 +1,33 @@
-# Comparative Analysis of Integration Results
+## Comparison
 
-## Results of Calculations
+The obtained results can be compared with the analytically calculated probabilities for throwing two dice. This allows us to verify the correctness of the Monte Carlo algorithm implementation and its correspondence to the analytical results.
 
-1. Integral using Monte Carlo method: 2.675
-2. Integral using quad function: 2.6666666666666665
+## Conclusion
 
-## Conclusions
+The simulation results demonstrate that the obtained probabilities correspond to the analytically calculated values. This indicates the correctness of the Monte Carlo algorithm implementation for this task.
 
-The Monte Carlo method provided a reasonably close result to the integral value obtained using the quad function from the SciPy library. The difference between the two values is small, indicating the correctness of both methods. The Monte Carlo method is straightforward to implement and can handle complex functions where analytical methods may not be applicable.
+# Results and Conclusion
+
+## Results
+
+In this task, we implemented the Monte Carlo algorithm to simulate throwing two dice and calculate the probabilities for each possible sum.
+
+The simulation yielded the following results for the probabilities of each sum:
+
+| Sum | Analytical Probability | Monte Carlo Probability |
+| --- | ---------------------- | ----------------------- |
+| 2   | 2.78% (1/36)           | 2.77% (0.0277)          |
+| 3   | 5.56% (2/36)           | 5.58% (0.0558)          |
+| 4   | 8.33% (3/36)           | 8.28% (0.0828)          |
+| 5   | 11.11% (4/36)          | 11.11% (0.1111)         |
+| 6   | 13.89% (5/36)          | 13.84% (0.1384)         |
+| 7   | 16.67% (6/36)          | 16.71% (0.1671)         |
+| 8   | 13.89% (5/36)          | 13.93% (0.1393)         |
+| 9   | 11.11% (4/36)          | 11.11% (0.1111)         |
+| 10  | 8.33% (3/36)           | 8.31% (0.0831)          |
+| 11  | 5.56% (2/36)           | 5.59% (0.0559)          |
+| 12  | 2.78% (1/36)           | 2.76% (0.0276)          |
+
+## Graphical Representation
+
+![Probability Comparison](Figure_1.png)

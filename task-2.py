@@ -1,37 +1,36 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.integrate as spi
+import turtle
+import math
 
-def f(x):
-    return x ** 2
+def draw_pythagoras_tree(t, branch_length, level):
+    if level == 0:
+        return
+    t.forward(branch_length)
+    t.left(45)
+    draw_pythagoras_tree(t, branch_length * math.sqrt(2) / 2, level - 1)
 
-a = 0  
-b = 2  
+    t.right(90)
+    draw_pythagoras_tree(t, branch_length * math.sqrt(2) / 2, level - 1)
 
+    t.left(45)
+    t.backward(branch_length)
 
-num_points = 10000
+def main():
+    screen = turtle.Screen()
+    screen.title("Pythagoras Tree Fractal")
 
-x_random = np.random.uniform(a, b, num_points)
-y_random = np.random.uniform(0, max(f(x_random)), num_points)
+    t = turtle.Turtle()
+    t.speed(0)
+    t.penup()
+    t.goto(0, -200) 
+    t.pendown()
+    t.left(90) 
 
-points_under_curve = sum(y_random <= f(x_random))
+    level = int(input("Enter the level of recursion: "))
+    
+    draw_pythagoras_tree(t, 100, level)
 
-rectangle_area = (b - a) * max(f(x_random))
-curve_area = (points_under_curve / num_points) * rectangle_area
+    t.hideturtle()
+    turtle.done()
 
-print("Інтеграл методом Монте-Карло: ", curve_area)
-
-plt.plot(x_random, y_random, 'b.', markersize=1)
-plt.plot(np.linspace(a, b), f(np.linspace(a, b)), 'r-', linewidth=2)
-plt.fill_between(np.linspace(a, b), f(np.linspace(a, b)), color='gray', alpha=0.3)
-plt.xlim([a, b])
-plt.ylim([0, max(f(x_random)) + 0.1])
-plt.xlabel('x')
-plt.ylabel('f(x)')
-plt.title('Графік інтегрування f(x) = x^2 від ' + str(a) + ' до ' + str(b))
-plt.grid()
-plt.show()
-
-
-result, error = spi.quad(f, a, b)
-print("Інтеграл за допомогою функції quad: ", result)
+if __name__ == "__main__":
+    main()
